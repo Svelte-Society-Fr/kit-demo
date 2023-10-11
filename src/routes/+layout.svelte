@@ -1,16 +1,30 @@
 <script lang="ts">
-  import { navigating } from '$app/stores';
+  import { bag } from '$lib/stores';
 </script>
 
-<nav>
-  <a href="/">Accueil</a>
-  <a href="/pokedex">Pokedex</a>
-  <a href="/faq">Info</a>
-  <a href="/sac">Sac</a>
-</nav>
+<header>
+  <nav>
+    <a href="/">Accueil</a>
+    <a href="/pokedex">Pokedex</a>
+    <a href="/faq">Info</a>
+    <a href="/bag">Sac({$bag.length})</a>
+  </nav>
+</header>
 
-{#if $navigating}
-  <div>Chargement</div>
-{/if}
+<main>
+  <slot />
+</main>
 
-<slot />
+<style>
+  header {
+    padding: 1rem;
+  }
+  main {
+    display: flex;
+    overflow: auto;
+    flex: 1;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+  }
+</style>

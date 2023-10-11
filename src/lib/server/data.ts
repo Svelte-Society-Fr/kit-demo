@@ -1,3 +1,5 @@
+import pokemons from '../../../data/pokemons.json';
+
 const url = 'https://pokeapi.co/api/v2/pokemon';
 
 function normalize(data: any) {
@@ -21,5 +23,5 @@ export async function fetchPokemon(id: number) {
 }
 
 export function fetchPokemons() {
-  return Promise.all([...Array(151).keys()].map(x => x + 1).map(fetchPokemon));
+  return Promise.resolve(pokemons);
 }

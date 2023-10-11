@@ -1,4 +1,4 @@
-import { fetchPokemons } from '$lib/data';
+import { fetchPokemons } from '$lib/server/data';
 
 export const load = () => {
   return {
