@@ -27,7 +27,7 @@
   });
 </script>
 
-<h1>Attrapez les Pokemons</h1>
+<h1>Attrapez les Pokémons</h1>
 
 <div class="grass">
   {#each visible as { id, key }, position (key)}
@@ -41,3 +41,9 @@
     />
   {/each}
 </div>
+
+<style>
+  h1 {
+    text-align: center;
+  }
+</style>
