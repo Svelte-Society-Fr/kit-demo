@@ -5,7 +5,7 @@
 
   export let data;
 
-  let visible: number[] = [];
+  let visible: { id: number; key: number }[] = [];
 
   $: ({ pokemons } = data);
 
@@ -15,7 +15,10 @@
 
   onMount(() => {
     const addInterval = setInterval(() => {
-      visible = [...visible, getRandomNb(pokemons.length) + 1];
+      visible = [
+        ...visible,
+        { id: getRandomNb(pokemons.length) + 1, key: Date.now() },
+      ];
     }, 2000);
 
     return () => {
@@ -27,7 +30,7 @@
 <h1>Attrapez les Pokemons</h1>
 
 <div class="grass">
-  {#each visible as id, position (id)}
+  {#each visible as { id, key }, position (key)}
     {@const { sprites, name } = pokemons[id - 1]}
     <Prey
       {id}
