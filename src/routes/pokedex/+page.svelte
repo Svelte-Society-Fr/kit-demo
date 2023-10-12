@@ -1,7 +1,7 @@
 <script lang="ts">
   export let data;
 
-  $: ({ pokemons, bag } = data);
+  $: ({ pokemons, seen } = data);
 </script>
 
 <ul>
@@ -12,7 +12,7 @@
       sprites: { front_default: src },
     } = pokemon}
 
-    <li class="mini" class:caught={bag.find(({ id }) => id === pokemon.id)}>
+    <li class="mini" class:caught={seen.find(id => id === pokemon.id)}>
       <a href="/pokedex/{id}">
         <img {src} alt={name} />
       </a>

@@ -1,5 +1,6 @@
 import { writeFileSync, readFileSync } from 'fs';
 import { randomUUID } from 'crypto';
+import { addToSeen } from './seen';
 
 export type PokemonInBag = { id: number; uuid: string };
 
@@ -11,6 +12,7 @@ export function addToBag(id: number) {
     uuid: randomUUID(),
   });
   saveBag(bag);
+  addToSeen(id);
 
   return bag;
 }

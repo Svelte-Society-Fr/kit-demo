@@ -1,4 +1,4 @@
-import { addToBag, readBag } from '$lib/server/database';
+import { addToBag, readBag } from '$lib/server/database/bag';
 
 export function GET() {
   const bag = readBag();
