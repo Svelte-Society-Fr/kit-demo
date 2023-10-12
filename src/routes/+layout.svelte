@@ -1,13 +1,40 @@
 <script lang="ts">
-  import { bag } from '$lib/stores';
+  import { page } from '$app/stores';
+
+  const links = [
+    {
+      label: 'Accueil',
+      href: '/',
+    },
+    {
+      label: 'Pokedex',
+      href: '/pokedex',
+    },
+    {
+      label: 'Info',
+      href: '/faq',
+    },
+    {
+      label: 'Sac',
+      href: '/bag',
+    },
+  ];
+
+  export let data;
+
+  $: ({ bag } = data);
 </script>
 
 <header>
   <nav>
-    <a href="/">Accueil</a>
-    <a href="/pokedex">Pokedex</a>
-    <a href="/faq">Info</a>
-    <a href="/bag">Sac({$bag.length})</a>
+    {#each links as { href, label: originalLabel }}
+      {@const current = $page.url.pathname === href}
+      {@const label =
+        href === '/bag' && bag.length
+          ? `${originalLabel}(${bag.length})`
+          : originalLabel}
+      <a {href} class:current>{label}</a>
+    {/each}
   </nav>
 </header>
 
@@ -19,6 +46,12 @@
   header {
     padding: 1rem;
   }
+
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
+
   main {
     display: flex;
     overflow: auto;
@@ -26,5 +59,9 @@
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
+  }
+
+  .current {
+    color: #333;
   }
 </style>
