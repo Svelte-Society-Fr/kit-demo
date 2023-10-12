@@ -1,15 +1,16 @@
 <script lang="ts">
-  import { bag } from '$lib/stores.js';
-
   export let data;
 
   $: ({
-    name,
-    id,
-    sprites: { front_default: src },
+    bag,
+    pokemon: {
+      name,
+      id,
+      sprites: { front_default: src },
+    },
   } = data);
 
-  $: caught = $bag.find(i => i.id === id);
+  $: caught = bag.find(i => i.id === id);
   $: displayedName = caught ? name : name.replace(/./g, '?');
   $: alt = caught ? name : `Pokémon inconnu nº${id}`;
 </script>

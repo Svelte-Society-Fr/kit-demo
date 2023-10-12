@@ -1,9 +1,7 @@
 <script lang="ts">
-  import { bag } from '$lib/stores.js';
-
   export let data;
 
-  $: ({ pokemons } = data);
+  $: ({ pokemons, bag } = data);
 </script>
 
 <ul>
@@ -14,7 +12,7 @@
       sprites: { front_default: src },
     } = pokemon}
 
-    <li class="mini" class:caught={$bag.find(({ id }) => id === pokemon.id)}>
+    <li class="mini" class:caught={bag.find(({ id }) => id === pokemon.id)}>
       <a href="/pokedex/{id}">
         <img {src} alt={name} />
       </a>
