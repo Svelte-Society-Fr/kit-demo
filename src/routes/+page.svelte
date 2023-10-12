@@ -14,12 +14,12 @@
   }
 
   onMount(() => {
-    const addTimeout = setInterval(() => {
+    const addInterval = setInterval(() => {
       visible = [...visible, getRandomNb(pokemons.length) + 1];
     }, 2000);
 
     return () => {
-      clearTimeout(addTimeout);
+      clearInterval(addInterval);
     };
   });
 </script>

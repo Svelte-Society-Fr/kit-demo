@@ -22,9 +22,11 @@
     left = getRandomNb(innerWidth);
     const lifespan = getRandomNb(8 * 1000, 3 * 1000);
 
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       dispatch('disappear', position);
     }, lifespan);
+
+    return () => clearTimeout(timeout)
   });
 </script>
 
