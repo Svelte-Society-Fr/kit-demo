@@ -10,10 +10,18 @@ let bag: PokemonInBag[] = readBag();
 
 export function addToBag(id: number) {
   const uuid = randomUUID();
+
+  const siblings = bag.filter(pokemon => pokemon.id === id);
+
+  const speciesName = pokemons[id - 1].name;
+  const name = siblings.length
+    ? `${speciesName} ${siblings.length + 1}`
+    : speciesName;
+
   bag.push({
     id,
     uuid,
-    name: pokemons[id - 1].name + uuid,
+    name,
   });
   saveBag(bag);
   addToSeen(id);
