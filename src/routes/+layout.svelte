@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { enhance } from '$app/forms';
+  import { invalidate } from '$app/navigation';
   import { page } from '$app/stores';
 
   const links = [
@@ -22,7 +24,11 @@
 
   export let data;
 
-  $: ({ bag } = data);
+  let input: string;
+
+  $: ({ bag, account } = data);
+
+  $: console.log('Account', account);
 </script>
 
 <header>
@@ -36,6 +42,32 @@
       <a {href} class:current>{label}</a>
     {/each}
   </nav>
+
+  <section>
+    {#if account}
+      <p>{account.name}</p>
+      <form
+        action="/account?/quit"
+        method="POST"
+        use:enhance={() => {
+          invalidate('account:login');
+        }}
+      >
+        <button>Vider</button>
+      </form>
+    {:else}
+      <form
+        action="/account?/register"
+        method="POST"
+        use:enhance={() => {
+          invalidate('account:login');
+        }}
+      >
+        <input id="name" name="name" type="text" bind:value={input} />
+        <button disabled={!input}>S'inscrire</button>
+      </form>
+    {/if}
+  </section>
 </header>
 
 <main>
@@ -44,7 +76,31 @@
 
 <style>
   header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 1rem;
+    height: 4rem;
+  }
+
+  form {
+    display: flex;
+    align-items: stretch;
+  }
+
+  input {
+    width: 10rem;
+    line-height: 1.3rem;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  button[disabled]:hover {
+    background: unset;
+    color: #777;
+    cursor: not-allowed;
   }
 
   nav {
@@ -60,6 +116,12 @@
     align-content: center;
     justify-content: center;
     padding: 1rem;
+  }
+
+  section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 
   .current {
