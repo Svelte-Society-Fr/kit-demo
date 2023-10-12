@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { bag } from '$lib/stores.js';
+
   export let data;
 
   $: ({
@@ -6,12 +8,16 @@
     id,
     sprites: { front_default: src },
   } = data);
+
+  $: caught = $bag.find(i => i.id === id);
+  $: displayedName = caught ? name : name.replace(/./g, '?');
+  $: alt = caught ? name : `Pokémon inconnu nº${id}`;
 </script>
 
-<div class="Pokemon">
+<div class="Pokemon" class:caught>
   <div class="id">#{id}</div>
-  <img {src} alt={name} />
-  <div class="name">{name}</div>
+  <img {src} {alt} />
+  <div class="name">{displayedName}</div>
 </div>
 
 <style>
@@ -27,5 +33,15 @@
   .id {
     font-size: 1.5rem;
     text-transform: capitalize;
+  }
+
+  .caught img {
+    filter: none;
+  }
+
+  img {
+    height: 15rem;
+    object-fit: cover;
+    filter: contrast(0%) brightness(200%);
   }
 </style>
