@@ -22,7 +22,7 @@
 
   export let data;
 
-  $: ({ bag, seen } = data);
+  $: ({ bag } = data);
 </script>
 
 <header>

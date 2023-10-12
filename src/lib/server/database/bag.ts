@@ -2,14 +2,18 @@ import { writeFileSync, readFileSync } from 'fs';
 import { randomUUID } from 'crypto';
 import { addToSeen } from './seen';
 
-export type PokemonInBag = { id: number; uuid: string };
+import pokemons from '../../../../data/pokemons.json';
+
+export type PokemonInBag = { id: number; uuid: string; name: string };
 
 let bag: PokemonInBag[] = readBag();
 
 export function addToBag(id: number) {
+  const uuid = randomUUID();
   bag.push({
     id,
-    uuid: randomUUID(),
+    uuid,
+    name: pokemons[id - 1].name + uuid,
   });
   saveBag(bag);
   addToSeen(id);
