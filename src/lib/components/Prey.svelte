@@ -17,8 +17,9 @@
   let top: number;
   let left: number;
 
-  async function catchPokemon(id: number) {
+  async function catchPokemon(id: number, position: number) {
     await fetch(`/bag/${id}`, { method: 'POST' });
+    dispatch('disappear', position);
 
     invalidate('bag:all');
   }
@@ -39,8 +40,8 @@
 <svelte:window bind:innerHeight bind:innerWidth />
 
 <span
-  on:click={() => catchPokemon(id)}
-  on:keydown={() => catchPokemon(id)}
+  on:click={() => catchPokemon(id, position)}
+  on:keydown={() => catchPokemon(id, position)}
   role="button"
   tabindex="0"
 >
