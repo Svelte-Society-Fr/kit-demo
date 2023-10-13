@@ -1,4 +1,4 @@
-import { writeFileSync, readFileSync } from 'fs';
+import { writeFileSync, readFileSync, unlinkSync } from 'fs';
 
 let seen: number[] = [];
 
@@ -7,6 +7,15 @@ export function addToSeen(id: number) {
   saveSeen(seen);
 
   return seen;
+}
+
+export function clearSeen() {
+  try {
+    unlinkSync('./data/generated/seen.json');
+    seen = [];
+  } catch {
+    console.error('Impossible de vider le pokedex');
+  }
 }
 
 export function readSeen() {

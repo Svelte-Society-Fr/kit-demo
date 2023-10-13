@@ -1,4 +1,4 @@
-import { writeFileSync, readFileSync } from 'fs';
+import { writeFileSync, readFileSync, unlinkSync } from 'fs';
 import { randomUUID } from 'crypto';
 import { addToSeen } from './seen';
 
@@ -34,6 +34,15 @@ export function removeFromBag(uuid: string) {
   saveBag(bag);
 
   return bag;
+}
+
+export function clearBag() {
+  try {
+    unlinkSync('./data/generated/bag.json');
+    bag = [];
+  } catch {
+    console.error('Impossible de vider le bag');
+  }
 }
 
 export function readBag() {

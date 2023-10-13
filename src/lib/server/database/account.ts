@@ -1,4 +1,6 @@
 import { writeFileSync, readFileSync, unlinkSync } from 'fs';
+import { clearBag } from './bag';
+import { clearSeen } from './seen';
 
 export type Account = { name: string };
 
@@ -12,12 +14,8 @@ export function deleteAccount() {
   try {
     unlinkSync('./data/generated/account.json');
   } catch {}
-  try {
-    unlinkSync('./data/generated/seen.json');
-  } catch {}
-  try {
-    unlinkSync('./data/generated/bag.json');
-  } catch {}
+  clearSeen();
+  clearBag();
 }
 
 export function login() {
