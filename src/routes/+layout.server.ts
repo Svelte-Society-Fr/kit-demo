@@ -7,17 +7,10 @@ export const load = ({ fetch, depends }) => {
   depends('account:login');
 
   return {
+    pokemons: fetchPokemons(),
     account: fetch('/account')
       .then(resp => resp.json())
       .then(bag => bag as Account),
-    pokemons: fetchPokemons(),
-    seen: fetch('/pokedex', {
-      headers: {
-        accept: 'application/json',
-      },
-    })
-      .then(resp => resp.json())
-      .then(seen => seen as number[]),
     bag: fetch('/bag/all')
       .then(resp => resp.json())
       .then(bag => bag as PokemonInBag[]),

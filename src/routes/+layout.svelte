@@ -1,6 +1,5 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
-  import { invalidate, invalidateAll } from '$app/navigation';
   import { page } from '$app/stores';
 
   const links = [
@@ -44,7 +43,7 @@
   <section>
     {#if account}
       <p>{account.name}</p>
-      <form action="/account?/quit" method="POST" use:enhance={invalidateAll}>
+      <form action="/account?/quit" method="POST" use:enhance>
         <button>Vider</button>
       </form>
     {:else}
@@ -52,7 +51,6 @@
         action="/account?/register"
         method="POST"
         use:enhance={() => {
-          invalidate('account:login');
           input = '';
         }}
       >
