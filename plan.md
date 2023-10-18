@@ -15,26 +15,23 @@
     - ...
 
 
-- Bases de Svelte (10 min)
-  - `$:`
-
-- SvelteKit
+- Atelier
   - routing
-    - `[id]`
-  - layouts
-    - layout principal
-    - sous layouts
-  - chargements de données
-    - `+page.server.ts`
-    - `+layout.server.ts`
-    - `+server.ts`
-    - (`+layout.ts`)
-    - (`+page.ts`)
-  - redirections
-  - (formulaires) => faux login
-  - pages d'erreur
-  - Navigation
-    - `$navigating`
-    - view transitions
-  - Options de page: ssr, static, spa
+    - pages statiques
+    - menu (`layout.svelte`) (à l'oral sous layouts)
+  - page de pokedex
+    - chargement des pokemons => `+page.server.ts`
+    - page d'un pokemon `[id]`
+  - page d'accueil
+    - ajoute les Prey
+    - création de l'API bag (`+server.ts`)
+    - ne pas oublier de maj `seen`
+    - nb attrapés dans le header (`+layout.server.ts` + `depends`) (à l'oral `+layout.ts`, `+page.ts`)
+  - page du sac
+    - libération des pokémons
+  - changer le nom d'un pokémon
+    - création du formulaire (form actions)
+  - déploiement
+
+
 
