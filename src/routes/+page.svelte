@@ -34,10 +34,9 @@
     {@const { sprites, name } = pokemons[id - 1]}
     <Prey
       {id}
-      {position}
       {name}
       src={sprites.front_default}
-      on:disappear={({ detail }) => remove(detail)}
+      on:disappear={() => remove(position)}
     />
   {/each}
 </div>

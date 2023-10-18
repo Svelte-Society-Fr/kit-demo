@@ -4,12 +4,11 @@
   import { createEventDispatcher, onMount } from 'svelte';
 
   export let id: number;
-  export let position: number;
   export let name: string;
   export let src: string;
 
   const dispatch = createEventDispatcher<{
-    disappear: number;
+    disappear: void;
   }>();
 
   let innerHeight: number;
@@ -17,9 +16,9 @@
   let top: number;
   let left: number;
 
-  async function catchPokemon(id: number, position: number) {
+  async function catchPokemon() {
     await fetch(`/bag/${id}`, { method: 'POST' });
-    dispatch('disappear', position);
+    dispatch('disappear');
 
     invalidate('bag:all');
   }
@@ -30,7 +29,7 @@
     const lifespan = getRandomNb(8 * 1000, 3 * 1000);
 
     const timeout = setTimeout(() => {
-      dispatch('disappear', position);
+      dispatch('disappear');
     }, lifespan);
 
     return () => clearTimeout(timeout);
@@ -40,8 +39,8 @@
 <svelte:window bind:innerHeight bind:innerWidth />
 
 <span
-  on:click={() => catchPokemon(id, position)}
-  on:keydown={() => catchPokemon(id, position)}
+  on:click={catchPokemon}
+  on:keydown={catchPokemon}
   role="button"
   tabindex="0"
 >

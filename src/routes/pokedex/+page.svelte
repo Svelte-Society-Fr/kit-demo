@@ -14,11 +14,11 @@
 
     <li class="mini" class:caught={seen.find(id => id === pokemon.id)}>
       <a href="/pokedex/{id}">
-        <img {src} alt={name} />
+        <img {src} alt={name} width="96" height="96" />
       </a>
     </li>
   {:else}
-    <p class="info">Pas de pokémons</p>
+    <p class="info">Pas de pokémon</p>
   {/each}
 </ul>
 

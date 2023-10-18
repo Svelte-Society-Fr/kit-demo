@@ -1,15 +1,11 @@
-export const load = ({ fetch, depends }) => {
+import { readSeen } from '$lib/server/database/seen';
+
+export const load = ({ depends }) => {
   depends('pokedex:seen');
 
   console.log('LOAD SEEN');
 
   return {
-    seen: fetch('/pokedex', {
-      headers: {
-        accept: 'application/json',
-      },
-    })
-      .then(resp => resp.json())
-      .then(seen => seen as number[]),
+    seen: readSeen(),
   };
 };

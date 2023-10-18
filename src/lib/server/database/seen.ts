@@ -20,9 +20,11 @@ export function clearSeen() {
 
 export function readSeen() {
   try {
-    return JSON.parse(readFileSync('./data/generated/seen.json').toString());
+    return JSON.parse(
+      readFileSync('./data/generated/seen.json').toString(),
+    ) as number[];
   } catch {
-    return [];
+    return [] as number[];
   }
 }
 function saveSeen(seen: number[]) {

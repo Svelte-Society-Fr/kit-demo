@@ -23,7 +23,7 @@
       <button on:click={() => release(uuid)}>Libérer</button>
     </li>
   {:else}
-    <p class="info">Pas de pokémons</p>
+    <p class="info">Pas de pokémon</p>
   {/each}
 </ul>
 
