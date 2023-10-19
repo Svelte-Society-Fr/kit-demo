@@ -2,7 +2,7 @@
   export let data;
 
   $: ({
-    bag,
+    seen,
     pokemon: {
       name,
       id,
@@ -10,7 +10,7 @@
     },
   } = data);
 
-  $: caught = bag.find(i => i.id === id);
+  $: caught = seen.includes(id);
   $: displayedName = caught ? name : name.replace(/./g, '?');
   $: alt = caught ? name : `Pokémon inconnu nº${id}`;
 </script>
