@@ -1,10 +1,10 @@
 100 min
 
-
 - connaissances JS, HTML, CSS
 - pas de préquis Svelte
 
 - Introduction Svelte (10 min max)
+
   - D'où ça vient ?
   - C'est quoi SvelteKit ?
   - Qui s'en sert ?
@@ -14,11 +14,10 @@
     - Apple
     - ...
 
-
 - Atelier
   - routing
-    - pages statiques
-    - menu (`layout.svelte`) (à l'oral sous layouts)
+    - pages statiques (FàQ)
+    - menu (`+layout.svelte`) (à l'oral sous layouts)
   - page de pokedex
     - chargement des pokemons => `+page.server.ts`
     - page d'un pokemon `[id]`
@@ -32,6 +31,3 @@
   - changer le nom d'un pokémon
     - création du formulaire (form actions)
   - déploiement
-
-
-
