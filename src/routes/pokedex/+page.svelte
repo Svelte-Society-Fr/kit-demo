@@ -12,13 +12,13 @@
       sprites: { front_default: src },
     } = pokemon}
 
-    <li class="mini" class:caught={seen.find(id => id === pokemon.id)}>
+    <li class:caught={seen.includes(id)}>
       <a href="/pokedex/{id}">
-        <img {src} alt={name} width="96" height="96" />
+        <img {src} alt={name} width="96" height="96" loading="lazy" />
       </a>
     </li>
   {:else}
-    <p class="info">Pas de pokémon</p>
+    <p>Pas de pokémon</p>
   {/each}
 </ul>
 
@@ -33,21 +33,21 @@
     justify-content: center;
   }
 
-  .mini {
+  li {
     position: relative;
     margin: 1rem;
     cursor: pointer;
   }
 
-  .mini img {
+  li img {
     filter: contrast(0%) brightness(200%);
   }
 
-  .mini.caught img {
+  li.caught img {
     filter: none;
   }
 
-  .mini.caught:hover img {
+  li.caught:hover img {
     filter: drop-shadow(0px 0px 10px #333);
   }
 </style>

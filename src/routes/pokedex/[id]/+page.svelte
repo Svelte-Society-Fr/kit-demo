@@ -11,14 +11,14 @@
   } = data);
 
   $: caught = seen.includes(id);
-  $: displayedName = caught ? name : name.replace(/./g, '?');
+  $: displayedName = caught ? name : name.replace(/./g, "?");
   $: alt = caught ? name : `Pokémon inconnu nº${id}`;
 </script>
 
 <div class="Pokemon" class:caught>
-  <div class="id">#{id}</div>
+  <p>#{id}</p>
   <img {src} {alt} />
-  <div class="name">{displayedName}</div>
+  <p>{displayedName}</p>
 </div>
 
 <style>
@@ -30,8 +30,8 @@
     margin: auto;
   }
 
-  .name,
-  .id {
+  p {
+    margin: 0;
     font-size: 1.5rem;
     text-transform: capitalize;
   }
