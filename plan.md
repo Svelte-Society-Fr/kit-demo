@@ -27,6 +27,7 @@
     - création de l'API bag (`+server.ts`)
     - ne pas oublier de maj `seen`
     - nb attrapés dans le header (`+layout.server.ts` + `depends`) (à l'oral `+layout.ts`, `+page.ts`)
+    - chargement asynchrone
   - page du sac
     - libération des pokémons
   - changer le nom d'un pokémon

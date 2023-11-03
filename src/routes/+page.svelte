@@ -8,7 +8,10 @@
 
   let visible: { id: number; key: number }[] = [];
 
-  $: ({ pokemons } = data);
+  $: ({
+    pokemons,
+    heavy: { population },
+  } = data);
 
   function remove(position: number) {
     visible = visible.filter((_, i) => i !== position);
@@ -46,10 +49,27 @@
       on:catch={({ detail }) => putInBag(detail)}
     />
   {/each}
+  <section>
+    {#await population}
+      <p>Scan de la zone...</p>
+    {:then nb}
+      <p>{nb} pokémons présents</p>
+    {/await}
+  </section>
 </div>
 
 <style>
   h1 {
     text-align: center;
+  }
+
+  section {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  p {
+    margin: 0;
   }
 </style>

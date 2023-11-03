@@ -57,6 +57,7 @@
   }
 
   main {
+    position: relative;
     display: flex;
     overflow: auto;
     flex: 1;
