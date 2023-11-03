@@ -1,0 +1,27 @@
+ul {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+}
+
+li {
+  position: relative;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+li img {
+  filter: contrast(0%) brightness(200%);
+}
+
+li.caught img {
+  filter: none;
+}
+
+li.caught:hover img {
+  filter: drop-shadow(0px 0px 10px #333);
+}
