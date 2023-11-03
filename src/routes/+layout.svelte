@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { enhance } from '$app/forms';
   import { page } from '$app/stores';
 
   const links = [
@@ -23,9 +22,7 @@
 
   export let data;
 
-  let input: string;
-
-  $: ({ bag, account } = data);
+  $: ({ bag } = data);
 </script>
 
 <header>
@@ -39,26 +36,6 @@
       <a {href} class:current>{label}</a>
     {/each}
   </nav>
-
-  <section>
-    {#if account}
-      <p>{account.name}</p>
-      <form action="/account?/quit" method="POST" use:enhance>
-        <button>Vider</button>
-      </form>
-    {:else}
-      <form
-        action="/account?/register"
-        method="POST"
-        use:enhance={() => {
-          input = '';
-        }}
-      >
-        <input id="name" name="name" type="text" bind:value={input} />
-        <button disabled={!input}>S'inscrire</button>
-      </form>
-    {/if}
-  </section>
 </header>
 
 <main>
@@ -74,26 +51,6 @@
     height: 4rem;
   }
 
-  form {
-    display: flex;
-    align-items: stretch;
-  }
-
-  input {
-    width: 10rem;
-    line-height: 1.3rem;
-  }
-
-  input:focus {
-    outline: none;
-  }
-
-  button[disabled]:hover {
-    background: unset;
-    color: #777;
-    cursor: not-allowed;
-  }
-
   nav {
     display: flex;
     gap: 1rem;
@@ -107,12 +64,6 @@
     align-content: center;
     justify-content: center;
     padding: 1rem;
-  }
-
-  section {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
   }
 
   .current {

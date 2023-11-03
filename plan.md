@@ -16,7 +16,7 @@
 
 - Atelier
   - routing
-    - pages statiques (FàQ)
+    - pages statiques (FAQ)
     - menu (`+layout.svelte`) (à l'oral sous layouts)
   - page de pokedex
     - chargement des pokemons => `+page.server.ts`
