@@ -24,8 +24,8 @@
       </a>
       <p>{name}</p>
       <form method="POST" use:enhance>
-        <input id="name" name="name" class:missing={form?.uuid === uuid} />
-        <input class="hidden" id="id" name="id" value={uuid} />
+        <input name="name" class:missing={form?.uuid === uuid} />
+        <input type="hidden" name="id" value={uuid} />
         <button>Renommer</button>
       </form>
       <button on:click={() => release(uuid)}>Libérer</button>
@@ -58,9 +58,6 @@
 
   input {
     width: 100%;
-  }
-  .hidden {
-    display: none;
   }
   .missing {
     background: coral;
