@@ -1,5 +1,5 @@
-import { writeFileSync, readFileSync, unlinkSync } from 'fs';
 import { randomUUID } from 'crypto';
+import { readFileSync, unlinkSync, writeFileSync } from 'fs';
 import { addToSeen } from './seen';
 
 import pokemons from '../../../../data/pokemons.json';
@@ -52,6 +52,15 @@ export function readBag() {
     return [];
   }
 }
+
+export function rename(uuid: string, name: string) {
+  const pokemon = bag.find(pokemon => pokemon.uuid === uuid);
+  if (pokemon) {
+    pokemon.name = name;
+    saveBag(bag);
+  }
+}
+
 function saveBag(bag: { id: number; uuid: string }[]) {
   JSON.stringify(
     writeFileSync('./data/generated/bag.json', JSON.stringify(bag)),
