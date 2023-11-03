@@ -22,6 +22,7 @@
     - chargement des pokemons => `+page.server.ts`
     - page d'un pokemon `[id]`
   - page d'accueil
+    - chargement des pokemons dans le layout
     - ajoute les Prey
     - création de l'API bag (`+server.ts`)
     - ne pas oublier de maj `seen`

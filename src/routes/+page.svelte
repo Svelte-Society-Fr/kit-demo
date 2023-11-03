@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { invalidate } from '$app/navigation';
   import Prey from '$lib/components/Prey.svelte';
   import { getRandomNb } from '$lib/helpers.js';
   import { onMount } from 'svelte';
@@ -11,6 +12,11 @@
 
   function remove(position: number) {
     visible = visible.filter((_, i) => i !== position);
+  }
+
+  async function putInBag(id: number) {
+    await fetch(`/bag/${id}`, { method: 'POST' });
+    invalidate('bag:all');
   }
 
   onMount(() => {
@@ -37,6 +43,7 @@
       {name}
       src={sprites.front_default}
       on:disappear={() => remove(position)}
+      on:catch={({ detail }) => putInBag(detail)}
     />
   {/each}
 </div>

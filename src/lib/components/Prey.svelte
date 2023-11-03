@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { invalidate } from '$app/navigation';
   import { getRandomNb } from '$lib/helpers';
   import { createEventDispatcher, onMount } from 'svelte';
 
@@ -8,6 +7,7 @@
   export let src: string;
 
   const dispatch = createEventDispatcher<{
+    catch: number;
     disappear: void;
   }>();
 
@@ -16,11 +16,9 @@
   let top: number;
   let left: number;
 
-  async function catchPokemon() {
-    await fetch(`/bag/${id}`, { method: 'POST' });
+  async function catchPokemon(id: number) {
+    dispatch('catch', id);
     dispatch('disappear');
-
-    invalidate('bag:all');
   }
 
   onMount(() => {
@@ -39,8 +37,8 @@
 <svelte:window bind:innerHeight bind:innerWidth />
 
 <span
-  on:click={catchPokemon}
-  on:keydown={catchPokemon}
+  on:click={() => catchPokemon(id)}
+  on:keydown={() => catchPokemon(id)}
   role="button"
   tabindex="0"
 >
