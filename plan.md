@@ -25,7 +25,7 @@
     - chargement des pokemons dans le `+layout.server.ts`
     - ajoute les Prey
     - création de l'API bag (`+server.ts`)
-    - ne pas oublier de maj `seen`
+    (- ne pas oublier de maj `seen`)
     - nb attrapés dans le header (`+layout.server.ts` + `depends`) (à l'oral `+layout.ts`, `+page.ts`)
     - chargement asynchrone
   - page du sac
@@ -33,3 +33,4 @@
     - libération des pokémons
     - changer le nom d'un pokémon => form actions
   - déploiement
+    - sur Vercel (installer l'adapter)
