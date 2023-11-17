@@ -10,7 +10,7 @@ export function fetchPokemons() {
 }
 
 export function fetchTotalPopulation() {
-  return new Promise(resolve =>
+  return new Promise<number>(resolve =>
     setTimeout(() => resolve(getRandomNb(10 ** 4)), 4000),
   );
 }

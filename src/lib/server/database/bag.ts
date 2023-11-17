@@ -47,9 +47,12 @@ export function clearBag() {
 
 export function readBag() {
   try {
-    return JSON.parse(readFileSync('./data/generated/bag.json').toString());
+    return JSON.parse(
+      readFileSync('./data/generated/bag.json').toString(),
+    ) as PokemonInBag[];
   } catch {
-    return [];
+    console.error('Could not read bag');
+    return [] as PokemonInBag[];
   }
 }
 
