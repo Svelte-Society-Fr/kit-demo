@@ -1,6 +1,6 @@
 import pokemons from '../../../data/pokemons.json';
 
-export function load({ params }) {
+export function load() {
   return {
     pokemons,
   };
