@@ -8,7 +8,7 @@
       href: '/',
     },
     {
-      label: 'Pokédex',
+      label: 'Pokedex',
       href: '/pokedex',
     },
     {
@@ -81,7 +81,25 @@
     padding: 1rem;
   }
 
+  a {
+    position: relative;
+  }
+
   [aria-current='page'] {
     color: #333;
+  }
+
+  [aria-current='page']::before {
+    --size: 6px;
+    content: '';
+    width: 0;
+    height: 0;
+    display: block;
+    position: absolute;
+    top: -6px;
+    left: calc(50% - var(--size));
+    border: var(--size) solid transparent;
+    border-top: var(--size) solid black;
+    view-transition-name: active-page;
   }
 </style>
