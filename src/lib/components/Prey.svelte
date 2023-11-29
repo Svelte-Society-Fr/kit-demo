@@ -36,7 +36,7 @@
 
 <svelte:window bind:innerHeight bind:innerWidth />
 
-<span
+<div
   on:click={() => catchPokemon(id)}
   on:keydown={() => catchPokemon(id)}
   role="button"
@@ -48,7 +48,7 @@
     style:top="{top}px"
     style:left="{left}px"
   />
-</span>
+</div>
 
 <style>
   img {

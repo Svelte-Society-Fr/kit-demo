@@ -59,6 +59,7 @@
   main {
     position: relative;
     display: flex;
+    flex-direction: column;
     overflow: auto;
     flex: 1;
     flex-wrap: wrap;
