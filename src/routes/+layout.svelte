@@ -33,7 +33,7 @@
         href === '/bag' && bag.length
           ? `${originalLabel}(${bag.length})`
           : originalLabel}
-      <a {href} class:current>{label}</a>
+      <a {href} aria-current={current ? 'page' : null}>{label}</a>
     {/each}
   </nav>
 </header>
@@ -68,7 +68,7 @@
     padding: 1rem;
   }
 
-  .current {
+  [aria-current='page'] {
     color: #333;
   }
 </style>
