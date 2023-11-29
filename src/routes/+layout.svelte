@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onNavigate } from '$app/navigation';
   import { page } from '$app/stores';
 
   const links = [
@@ -23,6 +24,18 @@
   export let data;
 
   $: ({ bag } = data);
+
+  onNavigate(navigation => {
+    if (!document.startViewTransition) return;
+
+    return new Promise(resolve => {
+      document.startViewTransition(async () => {
+        resolve();
+
+        await navigation.complete;
+      });
+    });
+  });
 </script>
 
 <header>

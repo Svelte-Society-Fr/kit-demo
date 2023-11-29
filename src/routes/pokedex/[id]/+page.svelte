@@ -11,13 +11,13 @@
   } = data);
 
   $: caught = seen.includes(id);
-  $: displayedName = caught ? name : name.replace(/./g, "?");
+  $: displayedName = caught ? name : name.replace(/./g, '?');
   $: alt = caught ? name : `Pokémon inconnu nº${id}`;
 </script>
 
 <div class="Pokemon" class:caught>
   <p>#{id}</p>
-  <img {src} {alt} />
+  <img {src} {alt} style:view-transition-name="pokemon-image-{id}" />
   <p>{displayedName}</p>
 </div>
 

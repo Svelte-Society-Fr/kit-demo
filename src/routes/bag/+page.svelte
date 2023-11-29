@@ -20,7 +20,11 @@
 
     <li class="mini">
       <a href="/pokedex/{id}">
-        <img {src} alt={name} />
+        <img
+          {src}
+          alt={name}
+          style:view-transition-name={`pokemon-image-${id}`}
+        />
       </a>
       <p>{name}</p>
       <form method="POST" use:enhance>

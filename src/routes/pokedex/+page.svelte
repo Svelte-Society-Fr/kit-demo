@@ -14,7 +14,14 @@
 
     <li class:caught={seen.includes(id)}>
       <a href="/pokedex/{id}">
-        <img {src} alt={name} width="96" height="96" loading="lazy" />
+        <img
+          style:view-transition-name={`pokemon-image-${id}`}
+          {src}
+          alt={name}
+          width="96"
+          height="96"
+          loading="lazy"
+        />
       </a>
     </li>
   {:else}
