@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { invalidate } from '$app/navigation';
 	import Prey from '$lib/components/Prey.svelte';
+	import Teammate from '$lib/components/Teammate.svelte';
 	import { getRandomNb } from '$lib/helpers.js';
 	import { onMount } from 'svelte';
 	import { flip } from 'svelte/animate';
@@ -26,6 +27,17 @@
 		invalidate('bag:all');
 	}
 
+	async function gainExp(uuid: string, exp = 1) {
+		await fetch(`/team/${uuid}/exp/${exp}`, { method: 'PATCH' }).then(() => {
+			const pokemon = bag.find(pokemon => pokemon.uuid === uuid);
+
+			if (pokemon) {
+				pokemon.exp += exp;
+				bag = bag;
+			}
+		});
+	}
+
 	onMount(() => {
 		const addInterval = setInterval(() => {
 			visible = [
@@ -43,11 +55,10 @@
 <h1>Attrapez les Pokémons</h1>
 
 <ul class="team">
-	{#each team as { id, name, uuid } (uuid)}
+	{#each team as { id, name, uuid, exp } (uuid)}
 		{@const src = pokemons[id - 1].sprites.back_default}
 		<li animate:flip>
-			<img {src} alt={name} />
-			<p>{name}</p>
+			<Teammate {name} {src} {exp} on:fight={() => gainExp(uuid)} />
 		</li>
 	{/each}
 </ul>
@@ -79,21 +90,6 @@
 	.team {
 		display: flex;
 		gap: 1rem;
-	}
-
-	.team li img {
-		height: 100px;
-		width: 100px;
-	}
-
-	.team li {
-		display: flex;
-		background-color: lightgrey;
-		flex-flow: column;
-		padding: 0.5rem;
-		border-radius: 5px;
-		border: 1px solid black;
-		align-items: center;
 	}
 
 	section {

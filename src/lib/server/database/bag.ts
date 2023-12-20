@@ -9,6 +9,7 @@ export type PokemonInBag = {
 	uuid: string;
 	name: string;
 	inTeam: boolean;
+	exp: number;
 };
 
 let bag: PokemonInBag[] = readBag();
@@ -30,6 +31,7 @@ export function addToBag(id: number) {
 		uuid,
 		name,
 		inTeam: teamSize < 6,
+		exp: 0,
 	});
 	saveBag(bag);
 	addToSeen(id);
@@ -76,6 +78,14 @@ export function toggleFromTeam(uuid: string) {
 	const pokemon = bag.find(pokemon => pokemon.uuid === uuid);
 	if (pokemon) {
 		pokemon.inTeam = !pokemon.inTeam;
+		saveBag(bag);
+	}
+}
+
+export function addExp(uuid: string, exp: number) {
+	const pokemon = bag.find(pokemon => pokemon.uuid === uuid);
+	if (pokemon) {
+		pokemon.exp = (pokemon.exp ?? 0) + exp;
 		saveBag(bag);
 	}
 }

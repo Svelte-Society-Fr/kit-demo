@@ -25,7 +25,7 @@
 </script>
 
 <ul>
-	{#each [...team, ...bench] as { id, uuid, name, inTeam } (uuid)}
+	{#each [...team, ...bench] as { id, uuid, name, inTeam, exp } (uuid)}
 		{@const src = pokemons[id - 1].sprites.front_default}
 
 		<li class="mini" class:team={inTeam} animate:flip={{ duration: 200 }}>
@@ -33,6 +33,7 @@
 				<img {src} alt={name} />
 			</a>
 			<p>{name}</p>
+			<p>{exp ?? 0} pts</p>
 			<form method="POST" use:enhance>
 				<input name="name" class:missing={form?.uuid === uuid} />
 				<input type="hidden" name="id" value={uuid} />
