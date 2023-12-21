@@ -36,6 +36,9 @@
 			on:hide={() => {
 				removePrey(position);
 			}}
+			on:click={() => {
+				fetch(`/bag/${prey.id}`, { method: 'POST' });
+			}}
 			pokemon={data.pokemons[prey.id - 1]}
 		/>
 	{/each}

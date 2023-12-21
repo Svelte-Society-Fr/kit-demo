@@ -27,9 +27,9 @@
 </script>
 
 <svelte:window bind:innerHeight={height} bind:innerWidth={width} />
-<div class="Prey" style:top style:left>
+<button class="Prey" style:top style:left on:click>
 	<img src={pokemon.sprites.front_default} alt={pokemon.name} />
-</div>
+</button>
 
 <style>
 	.Prey {
