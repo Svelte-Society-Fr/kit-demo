@@ -6,7 +6,7 @@ Faire une app de baston de Pokemon avec base de données JSON. On utilise le fic
 
 - Formulaire pour choisir id de pokemon (avec un radio bouton), et un nom (par défaut, le nom du pokemon, mais vous pouvez choisir de mettre autre chose) et un
 - Sur le serveur, lorsque vous créez le combattant, lui donner aléatoirement un nombre de PV (entre 50 et 200) et une force (entre 20 et 50)
-- Ajouter le combattant créé en base sous la forme `{ uuid, name, id, points }`
+- Ajouter le combattant créé en base sous la forme `{ uuid, name, id, points, pv, force }`
 
 ### Page d'accueil
 
