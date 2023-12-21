@@ -14,7 +14,7 @@ const bag: PokemonInBag[] = readBag();
 export function readBag() {
 	try {
 		const dataString = readFileSync('./data/generated/bag.json').toString();
-		return JSON.parse(dataString);
+		return JSON.parse(dataString) as PokemonInBag[];
 	} catch (e) {
 		return [];
 	}

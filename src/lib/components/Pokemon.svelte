@@ -4,9 +4,10 @@
 		name: string;
 		sprites: { front_default: string };
 	};
+	export let caught: boolean;
 </script>
 
-<li>
+<li class:caught>
 	<a href="/pokedex/{pokemon.id}">
 		<p>#{pokemon.id}</p>
 		<img src={pokemon.sprites.front_default} alt={pokemon.name} />
@@ -15,6 +16,9 @@
 </li>
 
 <style>
+	.caught {
+		background-color: red;
+	}
 	li a {
 		display: flex;
 		flex-flow: column;

@@ -2,13 +2,15 @@
 	import Pokemon from '$lib/components/Pokemon.svelte';
 
 	export let data;
+
+	$: console.log('cuaght', data.caught);
 </script>
 
 <h1>Pokedex</h1>
 
 <ul>
 	{#each data.pokemons as pokemon}
-		<Pokemon {pokemon} />
+		<Pokemon {pokemon} caught={data.caught.includes(pokemon.id)} />
 	{/each}
 </ul>
 
