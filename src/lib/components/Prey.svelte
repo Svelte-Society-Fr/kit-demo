@@ -6,6 +6,8 @@
 
 	let height: number;
 	let width: number;
+	let top = '';
+	let left = '';
 
 	export let pokemon: {
 		id: number;
@@ -15,6 +17,8 @@
 
 	onMount(() => {
 		const lifespan = getRandomNumber(3000, 6000);
+		top = getRandomNumber(height - 100) + 'px';
+		left = getRandomNumber(width - 100) + 'px';
 
 		setTimeout(() => {
 			dispatch('hide');
@@ -23,6 +27,14 @@
 </script>
 
 <svelte:window bind:innerHeight={height} bind:innerWidth={width} />
-<div class="Prey">
+<div class="Prey" style:top style:left>
 	<img src={pokemon.sprites.front_default} alt={pokemon.name} />
 </div>
+
+<style>
+	.Prey {
+		position: fixed;
+		top: 100px;
+		left: 100px;
+	}
+</style>
